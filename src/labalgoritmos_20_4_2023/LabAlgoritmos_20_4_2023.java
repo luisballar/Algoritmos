@@ -10,11 +10,9 @@ package labalgoritmos_20_4_2023;
  * @author LabB
  */
 public class LabAlgoritmos_20_4_2023 {
+    public static void main(String args[]){
 
-    
-    
-    
-    
-    
-    
+
+
+    }
 }
