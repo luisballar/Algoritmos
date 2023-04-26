@@ -14,7 +14,7 @@ public class LabAlgoritmos_20_4_2023 {
 
         Metodos mD = new Metodos();
         System.out.println(mD.menuImprimir().toString());
-
+        mD.entradaOpcion();
 
     }
 }
