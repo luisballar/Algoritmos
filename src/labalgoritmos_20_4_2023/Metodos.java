@@ -16,7 +16,7 @@ public class Metodos //extends Estudiante
 
 
 /**
-    public Metodos(String nombre, String ID, String telefono, char sexo, int edad) {
+    public Metodos(String nombre, String ID, String telefono, String sexo, String edad) {
         super(nombre, ID, telefono, sexo, edad);
     }
 */
@@ -48,7 +48,12 @@ public class Metodos //extends Estudiante
                System.out.println("3");
                break;
            case 4:
-               System.out.println("4");
+               System.out.println("Todos los datos");
+               Nodo Estudiante1 = new Nodo("Jesús;C21845;6333 8045; M; 20",Estudiante2);
+               Nodo Estudiante2 = new Nodo("Pedro;C01235;6933 8142; M; 19",Estudiante3);
+               Nodo Estudiante3 = new Nodo("Andrea;C23485;6003 8489; F; 20",null);
+               CreadorLista cL = new CreadorLista();
+               cL.enlazarNodos(Estudiante1,Estudiante2);
                break;
            case 5:
                System.out.println("5");
