@@ -1,26 +1,20 @@
 package labalgoritmos_20_4_2023;
 
+import org.w3c.dom.Node;
+
 import javax.print.attribute.standard.NumberOfDocuments;
 import java.sql.SQLOutput;
 
-public class CreadorLista {
-
-    Object Estudiante;
-    Nodo siguienteNodo;
-
-    //constructor
-    public void Nodo (Object Estudiante, Nodo siguienteNodo) {
-        this.Estudiante = Estudiante;
-        this.siguienteNodo = Nodo n;
-    }
-
-
-public void enlazarNodos(Nodo n, Nodo siguienteNodo){
-        while(siguienteNodo != null){
-            siguienteNodo = n;
-            System.out.println(Estudiante);
+public class Nodo {
+        Object Estudiante;
+        Nodo next;
+        //constructor con cabeza general
+        public Nodo(Object Estudiante) {
+            this.Estudiante = Estudiante;
+            this.next = null;
         }
 }
+
 
 
 
@@ -39,4 +33,4 @@ public String toString(){
 */
 
 
-}
+

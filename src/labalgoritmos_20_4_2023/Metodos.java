@@ -5,6 +5,8 @@
  */
 package labalgoritmos_20_4_2023;
 
+import org.w3c.dom.Node;
+
 import java.util.Scanner;
 
 /**
@@ -49,11 +51,15 @@ public class Metodos //extends Estudiante
                break;
            case 4:
                System.out.println("Todos los datos");
-               Nodo Estudiante1 = new Nodo("Jesús;C21845;6333 8045; M; 20",Estudiante2);
-               Nodo Estudiante2 = new Nodo("Pedro;C01235;6933 8142; M; 19",Estudiante3);
-               Nodo Estudiante3 = new Nodo("Andrea;C23485;6003 8489; F; 20",null);
-               CreadorLista cL = new CreadorLista();
-               cL.enlazarNodos(Estudiante1,Estudiante2);
+              // Nodo head = new Nodo("Jesús;C21845;6333 8045; M; 20", Estudiante2);
+              // Nodo Estudiante2 = new Nodo("Pedro;C01235;6933 8142; M; 19",Estudiante3);
+              // Nodo Estudiante3 = new Nodo("Andrea;C23485;6003 8489; F; 20", null);
+               listaEnlazada Estudiantes = new listaEnlazada();
+               Estudiantes.agregarPruebas("Jesús;C21845;6333 8045; M; 20");
+               Estudiantes.agregarPruebas("Pedro;C01235;6933 8142; M; 19");
+               Estudiantes.agregarPruebas("Andrea;C23485;6003 8489; F; 20");
+               Estudiantes.recorrerLista();
+
                break;
            case 5:
                System.out.println("5");
