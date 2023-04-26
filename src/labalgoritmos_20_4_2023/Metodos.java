@@ -42,6 +42,10 @@ public class Metodos //extends Estudiante
        switch(opcion){
            case 1:
                System.out.println("1");
+               listaEnlazada Estudiantes = new listaEnlazada();
+               Estudiantes.agregarPruebas("Jesús;C21845;6333 8045; M; 20");
+               Estudiantes.agregarPruebas("Pedro;C01235;6933 8142; M; 19");
+               Estudiantes.agregarPruebas("Andrea;C23485;6003 8489; F; 20");
                break;
            case 2:
                System.out.println("2");
@@ -54,11 +58,11 @@ public class Metodos //extends Estudiante
               // Nodo head = new Nodo("Jesús;C21845;6333 8045; M; 20", Estudiante2);
               // Nodo Estudiante2 = new Nodo("Pedro;C01235;6933 8142; M; 19",Estudiante3);
               // Nodo Estudiante3 = new Nodo("Andrea;C23485;6003 8489; F; 20", null);
-               listaEnlazada Estudiantes = new listaEnlazada();
-               Estudiantes.agregarPruebas("Jesús;C21845;6333 8045; M; 20");
-               Estudiantes.agregarPruebas("Pedro;C01235;6933 8142; M; 19");
-               Estudiantes.agregarPruebas("Andrea;C23485;6003 8489; F; 20");
-               Estudiantes.recorrerLista();
+               listaEnlazada EstudiantesTodosLosDatos = new listaEnlazada();
+               EstudiantesTodosLosDatos.agregarPruebas("Jesús;C21845;6333 8045; M; 20");
+               EstudiantesTodosLosDatos.agregarPruebas("Pedro;C01235;6933 8142; M; 19");
+               EstudiantesTodosLosDatos.agregarPruebas("Andrea;C23485;6003 8489; F; 20");
+               EstudiantesTodosLosDatos.recorrerLista();
 
                break;
            case 5:
