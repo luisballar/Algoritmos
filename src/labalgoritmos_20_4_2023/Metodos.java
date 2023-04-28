@@ -35,7 +35,7 @@ public class Metodos{
 
         int opcion = entrada.nextInt();
 
-        while(opcion>=1 && opcion<11){
+        while(opcion>=1 || opcion<11){
 
             switch (opcion){
 
@@ -45,23 +45,28 @@ public class Metodos{
                     break;
 
                 case 2:
-                    System.out.println("Ingrese el número carné");
-                    String carne = entrada.next();
-                    imprimirStudPorCarne(carne);
+                    System.out.println("CARNETS DE LOS ESTUDIANTES");
+                    imprimirCarnes();
                     break;
                 case 3:
                     imprimirNombres();
+                    break;
 
                 case 4:
                     imprimirLista();
                     break;
 
                 case 5:
-                    // mostrar uno por ID
+                    System.out.println("INGRESE EL CARNÉ DEL ESTUDIANTE A BUSCAR");
+                    String carneParam = entrada.next();
+                    imprimirPorCarne(carneParam);
                     break;
 
                 case 6:
-                    imprimirStudPorNombre("");
+                    entrada.nextLine();
+                    System.out.println("INGRESE EL NOMBRE DEL ESTUDIANTE A BUSCAR");
+                    String nombreParam = entrada.nextLine();
+                    imprimirPorNombre(nombreParam);
                     break;
                 case 7:
                     // mostrar x pos
@@ -78,7 +83,7 @@ public class Metodos{
 
             }
 
-            System.out.println("Ingrese otra opción u 11 para salir");
+            System.out.println("\n| | | INGRESE OTRA OPCIÓN U 11 PARA SALIR | | | ");
             opcion = entrada.nextInt();
 
             if (opcion == 11)
@@ -90,9 +95,10 @@ public class Metodos{
 
     // Contiene la información del estudiante
     public void estudianteInfo(){
+        entrada.nextLine(); // impide que se mezclen las variables
 
         System.out.println("Ingrese el nombre");
-        String nombre = entrada.next();
+        String nombre = entrada.nextLine();
         System.out.print("Nombre:" + nombre + "\n");
 
         System.out.println("\nIngrese el carné");
@@ -129,7 +135,7 @@ public class Metodos{
     }
 
 
-    // añade un nuevoe studiante a la lista
+    // añade un nuevo estudiante a la lista
     public void append(Estudiante nuevoEstudiante) {
 
         if (head == null) {
@@ -139,12 +145,12 @@ public class Metodos{
             while (inspector.siguiente != null) {
                 inspector = inspector.siguiente;
             }
-            inspector.siguiente = nuevoEstudiante;
             System.out.println("Insertado");
+            inspector.siguiente = nuevoEstudiante;
         }
     }
 
-    // borra el estudiante solicitado
+    // borra une estudiante de la lista
     public void delete(String ID) {
 
         // si la lista esta vacía
@@ -152,7 +158,6 @@ public class Metodos{
             System.out.println("La lista está vacía");
             return;
         }
-
 
         // si es el primer estudiante de la lista, entonces le damos el puesto al estudiante que le sigue
         if(head.getID().equalsIgnoreCase(ID)) {
@@ -169,12 +174,13 @@ public class Metodos{
 
     }
 
+    // imprimie los nodos y su información
     public void imprimirLista(){
         if(head == null){
             System.out.println("Esta lista está vacía");
         }else{
             Estudiante inspector = head;
-            while(inspector.siguiente != null){
+            while(inspector != null){
                 System.out.println(inspector.toString());
                 inspector = inspector.siguiente;
             }
@@ -182,15 +188,33 @@ public class Metodos{
     }
 
     // imprime los carne de los estudiantes en la lista
-    public void imprimirStudPorCarne(String carne) {
+    public void imprimirCarnes() {
         if (head == null) {
             System.out.println("Esta lista está vacía");
         } else {
             Estudiante inspector = head;
             while (inspector != null) {
-                System.out.println(inspector.toString());
+                System.out.println(inspector.getID());
                 inspector = inspector.siguiente;
             }
+        }
+    }
+
+    // imprime los datos del estudiante por carné
+    public void imprimirPorCarne(String carne) {
+        if (head == null) {
+            System.out.println("Esta lista está vacía");
+        } else {
+            Estudiante inspector = head;
+            while (inspector != null) {
+                if(inspector.getID().equalsIgnoreCase(carne)) {
+                    System.out.println(inspector.toString());
+                    break;
+                }else
+                    System.out.println("NO SE ENCONTRO ESTE CARNÉ");
+                inspector = inspector.siguiente;
+            }
+
         }
     }
 
@@ -200,27 +224,34 @@ public class Metodos{
             System.out.println("Esta lista está vacía");
         } else {
             Estudiante inspector = head;
-            while (inspector.siguiente != null) {
+            while (inspector != null) {
                 System.out.println(inspector.getNombre());
                 inspector = inspector.siguiente;
             }
         }
     }
 
-    // imprime el estudiante solicitado
-    public void imprimirStudPorNombre(String nombre){
+
+    // imprime los datos del estudiante por nombre
+    public void imprimirPorNombre(String nombre) {
         if (head == null) {
             System.out.println("Esta lista está vacía");
-        }else{
+        } else {
             Estudiante inspector = head;
-            while (inspector.siguiente != null) {
-                if (inspector.siguiente.getNombre().equalsIgnoreCase(nombre)) {
-                    System.out.println(inspector);
+            while (inspector != null) {
+                if(inspector.getNombre().equalsIgnoreCase(nombre)) {
+                    System.out.println(inspector.toString());
+                    break;
                 }
                 inspector = inspector.siguiente;
+
             }
+            if(inspector == null)
+             System.out.println("NO SE ENCONTRO ESTE NOMBRE");
+
         }
     }
+
 
 }
 

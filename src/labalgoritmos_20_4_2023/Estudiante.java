@@ -60,11 +60,11 @@ public class Estudiante {
     @Override
     public String toString() {
         return "----ESTUDIANTE----" +
-                "\nNombre='" + nombre + '\'' +
-                "\nID='" + ID + '\'' +
-                "\ntelefono='" + telefono +
-                "\nedad=" + edad +
-                "\nsexo=" + (sexo==false?"Femenino":"Masculino") + "\n------------";
+                "\nNombre = " + nombre +
+                "\nID = " + ID  +
+                "\ntelefono = " + telefono +
+                "\nedad = " + edad +
+                "\nsexo = " + (sexo==false?"Femenino":"Masculino") + "\n------------";
     }
 }
 
