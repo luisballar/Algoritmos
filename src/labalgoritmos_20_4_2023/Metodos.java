@@ -7,6 +7,7 @@ package labalgoritmos_20_4_2023;
 
 import org.w3c.dom.Node;
 
+import java.lang.reflect.Array;
 import java.util.Scanner;
 
 /**
@@ -14,7 +15,12 @@ import java.util.Scanner;
  * @author LabB
  */
 public class Metodos{
+    Estudiante head;
+    Scanner entrada = new Scanner(System.in);
 
+    public Metodos(){
+        this.head = null;
+    }
    public StringBuilder menuImprimir(){
        StringBuilder sB = new StringBuilder("Menu Principal").append(" \n Opción 1: Agregar estudiante " +
                "\n Opción 2: Mostrar todos los estudiantes por ID \n Opción 3: Mostar todos los estudiantes por nombre " +
@@ -27,7 +33,6 @@ public class Metodos{
 
    public void entradaOpcion(){
        int opcion =0;
-       Scanner entrada = new Scanner(System.in);
        while(opcion<=0 || opcion >11) {
            System.out.println("Ingrese la opción");
            opcion = entrada.nextInt();
@@ -97,7 +102,7 @@ public class Metodos{
             //if que evalua si la posicion del estudiante que brindo el usuario es igual a la posicion que ocupa
                 // en la lista el nodo actual.
                 if(posicionEstudiante == contPosicionNodo){
-                    Estudiante.edad = nuevaEdad;
+                    auxiliar.setEdad(nuevaEdad);
                     System.out.println(auxiliar.toString());
                     auxiliar = null;
                 }
