@@ -1,61 +1,71 @@
 package labalgoritmos_20_4_2023;
 
 public class Estudiante {
+    Estudiante siguiente;
     private String nombre;
     private String ID;
     private String telefono;
-    private char sexo;
     private int edad;
-    Estudiante siguiente;
-    Estudiante anterior;
-    Estudiante head;
+    private boolean sexo;
 
-    public Estudiante(String nombre, String ID, String telefono, char sexo, int edad) {
+    public Estudiante(String nombre, String ID, String telefono, int edad, boolean sexo) {
         this.nombre = nombre;
         this.ID = ID;
         this.telefono = telefono;
-        this.sexo = sexo;
         this.edad = edad;
+        this.sexo = sexo;
         this.siguiente = null;
-        this.head = null;
     }
 
-    public void append(Estudiante nuevoEstudiante) {
-
-        if (head == null) {
-            head = nuevoEstudiante;
-        } else {
-            Estudiante inspector = head;
-            while (inspector.siguiente != null) {
-                inspector = inspector.siguiente;
-            }
-            inspector.siguiente = nuevoEstudiante;
-        }
+    public String getNombre() {
+        return nombre;
     }
 
-    public void delete(String ID) {
-
-        // si la lista esta vacía
-        if (head == null) {
-            System.out.println("La lista está vacía");
-            return;
-        }
-
-
-        // si es el primer estudiante de la lista, entonces le damos el puesto al estudiante que le sigue
-        if(head.ID == ID) {
-        head = head.siguiente;
-        }
-
-        Estudiante inspector = head;
-        while(inspector.siguiente != null){
-            if(inspector.siguiente.ID == ID){
-                inspector.siguiente = inspector.siguiente.siguiente; // apunta al nodo siguiente del que estamos borrando
-            }
-            inspector = inspector.siguiente;
-        }
-
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public boolean isSexo() {
+        return sexo;
+    }
+
+    public void setSexo(boolean sexo) {
+        this.sexo = sexo;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "nombre='" + nombre + '\'' +
+                ", ID='" + ID + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", edad=" + edad +
+                ", sexo=" + sexo +
+                '}';
+    }
 }
 

@@ -1,5 +1,10 @@
 package labalgoritmos_20_4_2023;
 
 public class Node {
-    int edad;
+    public static void main(String[] args){
+        Metodos lista = new Metodos();
+
+        lista.menuPrincipal();
+
+    }
 }
