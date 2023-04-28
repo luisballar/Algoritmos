@@ -59,13 +59,12 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "Estudiante{" +
-                "nombre='" + nombre + '\'' +
-                ", ID='" + ID + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", edad=" + edad +
-                ", sexo=" + sexo +
-                '}';
+        return "----ESTUDIANTE----" +
+                "\nNombre='" + nombre + '\'' +
+                "\nID='" + ID + '\'' +
+                "\ntelefono='" + telefono +
+                "\nedad=" + edad +
+                "\nsexo=" + (sexo==false?"Femenino":"Masculino") + "\n------------";
     }
 }
 

@@ -29,50 +29,62 @@ public class Metodos{
         System.out.println(sB.toString());
         entradaOpcion();
 
-
     }
 
     public void entradaOpcion(){
 
         int opcion = entrada.nextInt();
 
-        switch (opcion){
-            case 1:
-                estudianteInfo();
-                break;
+        while(opcion>=1 && opcion<11){
 
-            case 2:
-                imprimirCarne();
+            switch (opcion){
 
-            case 3:
-                imprimirNombres();
+                case 1:
+                    System.out.println("INGRESAR ESTUDIANTE");
+                    estudianteInfo();
+                    break;
 
-            case 4:
-                imprimirLista();
-                break;
+                case 2:
+                    System.out.println("Ingrese el número carné");
+                    String carne = entrada.next();
+                    imprimirStudPorCarne(carne);
+                    break;
+                case 3:
+                    imprimirNombres();
 
-            case 5:
-                // mostrar uno ID
-                break;
+                case 4:
+                    imprimirLista();
+                    break;
 
-            case 6:
-                imprimirUno("");
-                break;
-            case 7:
-                // mostrar x pos
+                case 5:
+                    // mostrar uno por ID
+                    break;
 
-
-                break;
-
-            case 8:
-                // modificar
-
-            case 9:
-                delete("");
-                break;
+                case 6:
+                    imprimirStudPorNombre("");
+                    break;
+                case 7:
+                    // mostrar x pos
 
 
+                    break;
+
+                case 8:
+                    // modificar
+
+                case 9:
+                    delete("");
+                    break;
+
+            }
+
+            System.out.println("Ingrese otra opción u 11 para salir");
+            opcion = entrada.nextInt();
+
+            if (opcion == 11)
+                System.out.println("HA SALIDO DEL MENÚ");
         }
+
     }
 
 
@@ -81,31 +93,34 @@ public class Metodos{
 
         System.out.println("Ingrese el nombre");
         String nombre = entrada.next();
-        System.out.print("Nombre:" + nombre);
-        entrada.next();
+        System.out.print("Nombre:" + nombre + "\n");
 
         System.out.println("\nIngrese el carné");
         String carne = entrada.next();
-        System.out.print("Carné:" + carne);
+        System.out.print("Carné:" + carne + "\n");
+
 
         System.out.println("\nIngrese el teléfono");
-        String telefono = entrada.nextLine();
+        String telefono = entrada.next();
+        System.out.println("Teléfono: " + telefono + "\n");
 
-        entrada.next();
-
-
-        System.out.println("\nIngrese su edad");
+        System.out.println("Ingrese su edad");
         int edad = entrada.nextInt();
+        System.out.println("Edad: " + edad + "\n");
 
         System.out.println("\nIngrese su sexo");
         System.out.println("F: Femenino \nM: Masculino");
         char sexo = entrada.next().charAt(0);
         boolean bandera = false;
 
-        if(sexo == 'f' || sexo == 'F')
+        if(sexo == 'f' || sexo == 'F') {
             bandera = false;
-        else if (sexo == 'm' || sexo == 'M')
+            System.out.println("Femenino");
+        }else if (sexo == 'm' || sexo == 'M'){
             bandera = true;
+            System.out.println("Masculino");
+        }
+
 
         Estudiante student = new Estudiante(nombre, carne, telefono, edad, bandera);
         // llamamos al append
@@ -125,6 +140,7 @@ public class Metodos{
                 inspector = inspector.siguiente;
             }
             inspector.siguiente = nuevoEstudiante;
+            System.out.println("Insertado");
         }
     }
 
@@ -166,13 +182,13 @@ public class Metodos{
     }
 
     // imprime los carne de los estudiantes en la lista
-    public void imprimirCarne() {
+    public void imprimirStudPorCarne(String carne) {
         if (head == null) {
             System.out.println("Esta lista está vacía");
         } else {
             Estudiante inspector = head;
             while (inspector != null) {
-                System.out.println(inspector.getID());
+                System.out.println(inspector.toString());
                 inspector = inspector.siguiente;
             }
         }
@@ -192,7 +208,7 @@ public class Metodos{
     }
 
     // imprime el estudiante solicitado
-    public void imprimirUno(String nombre){
+    public void imprimirStudPorNombre(String nombre){
         if (head == null) {
             System.out.println("Esta lista está vacía");
         }else{
