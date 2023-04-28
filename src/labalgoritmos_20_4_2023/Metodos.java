@@ -13,15 +13,8 @@ import java.util.Scanner;
  *
  * @author LabB
  */
-public class Metodos //extends Estudiante
-{
+public class Metodos{
 
-
-/**
-    public Metodos(String nombre, String ID, String telefono, String sexo, String edad) {
-        super(nombre, ID, telefono, sexo, edad);
-    }
-*/
    public StringBuilder menuImprimir(){
        StringBuilder sB = new StringBuilder("Menu Principal").append(" \n Opción 1: Agregar estudiante " +
                "\n Opción 2: Mostrar todos los estudiantes por ID \n Opción 3: Mostar todos los estudiantes por nombre " +
@@ -39,14 +32,9 @@ public class Metodos //extends Estudiante
            System.out.println("Ingrese la opción");
            opcion = entrada.nextInt();
            if(opcion>0 || opcion <=11){
-               if(opcion != 11) {
                    switch (opcion) {
                        case 1:
                            System.out.println("1");
-                           listaEnlazada Estudiantes = new listaEnlazada();
-                           Estudiantes.agregarPruebas("Jesús;C21845;6333 8045; M; 20");
-                           Estudiantes.agregarPruebas("Pedro;C01235;6933 8142; M; 19");
-                           Estudiantes.agregarPruebas("Andrea;C23485;6003 8489; F; 20");
                            opcion=0;
                            break;
                        case 2:
@@ -59,14 +47,6 @@ public class Metodos //extends Estudiante
                            break;
                        case 4:
                            System.out.println("Todos los datos");
-                           // Nodo head = new Nodo("Jesús;C21845;6333 8045; M; 20", Estudiante2);
-                           // Nodo Estudiante2 = new Nodo("Pedro;C01235;6933 8142; M; 19",Estudiante3);
-                           // Nodo Estudiante3 = new Nodo("Andrea;C23485;6003 8489; F; 20", null);
-                           listaEnlazada EstudiantesTodosLosDatos = new listaEnlazada();
-                           EstudiantesTodosLosDatos.agregarPruebas("Jesús;C21845;6333 8045; M; 20");
-                           EstudiantesTodosLosDatos.agregarPruebas("Pedro;C01235;6933 8142; M; 19");
-                           EstudiantesTodosLosDatos.agregarPruebas("Andrea;C23485;6003 8489; F; 20");
-                           EstudiantesTodosLosDatos.recorrerLista();
                            opcion=0;
                            break;
                        case 5:
@@ -79,6 +59,11 @@ public class Metodos //extends Estudiante
                            break;
                        case 7:
                            System.out.println("7");
+                           System.out.println("Ingrese la posición en la que está el estudiante que quiere modificar");
+                           int posicionEstudiante = entrada.nextInt();
+                           System.out.println("Ingrese la nueva edad");
+                           int nuevaEdad = entrada.nextInt();
+                           intercambioDatoStudent(nuevaEdad, posicionEstudiante);
                            opcion=0;
                            break;
                        case 8:
@@ -93,11 +78,34 @@ public class Metodos //extends Estudiante
                            System.out.println("10");
                            opcion=0;
                            break;
+                       case 11:
+                           break;
                    }
-               }else
-                   opcion=11;
            }
        }
    }
+
+    // intercambiar un dato del estudiante
+
+    public void intercambioDatoStudent(int nuevaEdad, int posicionEstudiante){
+        int contPosicionNodo = 0;
+        if(head == null){
+            System.out.println("Esta lista se encuentra vacía");
+        }else {
+            Estudiante auxiliar = head;
+            while(auxiliar != null){
+            //if que evalua si la posicion del estudiante que brindo el usuario es igual a la posicion que ocupa
+                // en la lista el nodo actual.
+                if(posicionEstudiante == contPosicionNodo){
+                    Estudiante.edad = nuevaEdad;
+                    System.out.println(auxiliar.toString());
+                    auxiliar = null;
+                }
+                contPosicionNodo++;
+            }
+        }
+    }
+
+
 
 }
