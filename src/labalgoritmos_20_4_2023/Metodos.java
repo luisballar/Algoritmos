@@ -43,7 +43,6 @@ public class Metodos{
                     System.out.println("INGRESAR ESTUDIANTE");
                     estudianteInfo();
                     break;
-
                 case 2:
                     System.out.println("CARNETS DE LOS ESTUDIANTES");
                     imprimirCarnes();
@@ -51,17 +50,14 @@ public class Metodos{
                 case 3:
                     imprimirNombres();
                     break;
-
                 case 4:
                     imprimirLista();
                     break;
-
                 case 5:
                     System.out.println("INGRESE EL CARNÉ DEL ESTUDIANTE A BUSCAR");
                     String carneParam = entrada.next();
                     imprimirPorCarne(carneParam);
                     break;
-
                 case 6:
                     entrada.nextLine();
                     System.out.println("INGRESE EL NOMBRE DEL ESTUDIANTE A BUSCAR");
@@ -69,16 +65,17 @@ public class Metodos{
                     imprimirPorNombre(nombreParam);
                     break;
                 case 7:
-                    // mostrar x pos
-
-
+                    System.out.println("INGRESE LA POSICIÓN DEL ESTUDIANTE");
+                    int posicion = entrada.nextInt();
+                    imprimirPorPost(posicion);
                     break;
-
                 case 8:
                     // modificar
 
                 case 9:
-                    delete("");
+                    System.out.println("INGRESE EL ID DEL ESTUDIANTE A BORRAR");
+                    String IDestudianteBorrar = entrada.next();
+                    delete(IDestudianteBorrar);
                     break;
 
             }
@@ -119,6 +116,7 @@ public class Metodos{
         char sexo = entrada.next().charAt(0);
         boolean bandera = false;
 
+        // al ser dos opciones es mas fácil condicionar con un if
         if(sexo == 'f' || sexo == 'F') {
             bandera = false;
             System.out.println("Femenino");
@@ -150,7 +148,7 @@ public class Metodos{
         }
     }
 
-    // borra une estudiante de la lista
+    // borra un estudiante de la lista
     public void delete(String ID) {
 
         // si la lista esta vacía
@@ -251,6 +249,45 @@ public class Metodos{
 
         }
     }
+
+    public void imprimirPorPost(int position){
+        if(head == null){
+            System.out.println("Esta lista está vacía");
+        }else{
+            Estudiante inspector = head;
+            int i = 1;
+            while(inspector != null){
+                if(i == position) {
+                    System.out.println(i++ + " - " + inspector.toString());
+                    break;
+                }
+                inspector = inspector.siguiente;
+                i++;
+            }
+            if(inspector == null && i != position)
+                System.out.println("NO SE ENCONTRÓ LA POSICIÓN " + position);
+        }
+    }
+
+    public void intercambioDatoStudent(int nuevaEdad, int posicionEstudiante){
+        int contPosicionNodo = 0;
+        if(head == null){
+            System.out.println("Esta lista se encuentra vacía");
+        }else {
+            Estudiante auxiliar = head;
+            while(auxiliar != null){
+                //if que evalua si la posicion del estudiante que brindo el usuario es igual a la posicion que ocupa
+                // en la lista el nodo actual.
+                if(posicionEstudiante == contPosicionNodo){
+                    auxiliar.setEdad(nuevaEdad);
+                    System.out.println(auxiliar.toString());
+                    auxiliar = null;
+                }
+                contPosicionNodo++;
+            }
+        }
+    }
+
 
 
 }
