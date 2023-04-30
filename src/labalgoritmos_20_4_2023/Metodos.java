@@ -33,66 +33,53 @@ public class Metodos{
 
    public void entradaOpcion(){
        int opcion =0;
-       while(opcion<=0 || opcion >11) {
+       while((opcion<=0 || opcion >11)&&(opcion>0 || opcion <=11)){
            System.out.println("Ingrese la opción");
            opcion = entrada.nextInt();
-           if(opcion>0 || opcion <=11){
                    switch (opcion) {
                        case 1:
                            System.out.println("1");
-                           opcion=0;
                            break;
                        case 2:
                            System.out.println("2");
-                           opcion=0;
                            break;
                        case 3:
                            System.out.println("3");
-                           opcion=0;
                            break;
                        case 4:
                            System.out.println("Todos los datos");
-                           opcion=0;
                            break;
                        case 5:
                            System.out.println("5");
-                           opcion=0;
                            break;
                        case 6:
                            System.out.println("6");
-                           opcion=0;
                            break;
                        case 7:
                            System.out.println("7");
                            System.out.println("Ingrese la posición en la que está el estudiante que quiere modificar");
-                           int posicionEstudiante = entrada.nextInt();
-                           System.out.println("Ingrese la nueva edad");
-                           int nuevaEdad = entrada.nextInt();
-                           intercambioDatoStudent(nuevaEdad, posicionEstudiante);
-                           opcion=0;
                            break;
                        case 8:
                            System.out.println("8");
-                           opcion=0;
                            break;
                        case 9:
                            System.out.println("9");
-                           opcion=0;
+
                            break;
                        case 10:
                            System.out.println("10");
-                           opcion=0;
                            break;
                        case 11:
                            break;
                    }
+
            }
        }
-   }
+
 
     // intercambiar un dato del estudiante
-
-    public void intercambioDatoStudent(int nuevaEdad, int posicionEstudiante){
+/*
+    public void intercambioDatoStudent(int nuevaEdad, String carnet){
         int contPosicionNodo = 0;
         if(head == null){
             System.out.println("Esta lista se encuentra vacía");
@@ -112,5 +99,5 @@ public class Metodos{
     }
 
 
-
+*/
 }
