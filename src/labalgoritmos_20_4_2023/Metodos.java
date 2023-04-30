@@ -91,16 +91,20 @@ public class Metodos{
                     delete(IDestudianteBorrar);
                     break;
                 case 10:
+                    // imprime la cantidad de estudiantes
                     imprimirCantidad();
                     break;
             }
 
-            System.out.println("\n| | | INGRESE UNA OPCIÓN | | | ");
-            opcion = entrada.nextInt();
-
-            if (opcion == 11)
+            // si la entrada 11 sale completamente
+            if (opcion == 11) {
                 System.out.println("HA SALIDO DEL MENÚ");
                 break;
+            }
+
+            System.out.println("\n| | | INGRESE OTRA OPCIÓN | | | ");
+            opcion = entrada.nextInt();
+
         }
 
     }
@@ -117,7 +121,6 @@ public class Metodos{
         System.out.println("\nIngrese el carné");
         String carne = entrada.next();
         System.out.print("Carné:" + carne + "\n");
-
 
         System.out.println("\nIngrese el teléfono");
         String telefono = entrada.next();
@@ -147,7 +150,6 @@ public class Metodos{
         append(student);
 
     }
-
 
     // añade un nuevo estudiante a la lista
     public void append(Estudiante nuevoEstudiante) {
@@ -274,6 +276,7 @@ public class Metodos{
         }
     }
 
+    // imprime los datos del estudiante por posición
     public void imprimirPorPost(int position){
         if(head == null){
             System.out.println("Esta lista está vacía");
@@ -293,6 +296,7 @@ public class Metodos{
         }
     }
 
+    // cambia los datos de un estudiante
     public void intercambioDatoStudent(String carne, int nuevaEdad){
         if(head == null){
             System.out.println("Esta lista se encuentra vacía");
@@ -313,6 +317,7 @@ public class Metodos{
         }
     }
 
+    // imprime la cantidad de alumnos
     public void imprimirCantidad(){
             Estudiante inspector = head;
             int i = 0;
