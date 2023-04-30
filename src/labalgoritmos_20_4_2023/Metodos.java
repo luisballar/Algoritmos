@@ -21,7 +21,7 @@ public class Metodos{
                 .append("\n Opción 5: Mostrar estudiante por ID")
                 .append("\n Opción 6: Mostrar estudiante por nombre")
                 .append("\n Opción 7: Mostrar estudiante por pocisión de lista")
-                .append("\\n Opción 8 Modificar estudiante")
+                .append("\n Opción 8 Modificar estudiante")
                 .append("\n Opción 9: Eliminar estudiante ")
                 .append("\n Opción 10: Cantidad de estudiantes")
                 .append("\n Opción 11: Salir\n");
@@ -40,51 +40,67 @@ public class Metodos{
             switch (opcion){
 
                 case 1:
+                    // ingresa un estudiante nuevo a la lista
                     System.out.println("INGRESAR ESTUDIANTE");
                     estudianteInfo();
                     break;
                 case 2:
+                    // imprime los carnets de los estudiantes de la lista
                     System.out.println("CARNETS DE LOS ESTUDIANTES");
                     imprimirCarnes();
                     break;
                 case 3:
+                    // imprime los nombres de los estudiantes de la lista
                     imprimirNombres();
                     break;
                 case 4:
+                    // imprime los estudiantes y sus datos
                     imprimirLista();
                     break;
                 case 5:
+                    // imprime un estudiante ingresando su carnet
                     System.out.println("INGRESE EL CARNÉ DEL ESTUDIANTE A BUSCAR");
                     String carneParam = entrada.next();
                     imprimirPorCarne(carneParam);
                     break;
                 case 6:
-                    entrada.nextLine();
+                    // imprime un estudiante ingresando su nombre
+                    entrada.nextLine(); // limpia el buffer de entrada
                     System.out.println("INGRESE EL NOMBRE DEL ESTUDIANTE A BUSCAR");
                     String nombreParam = entrada.nextLine();
                     imprimirPorNombre(nombreParam);
                     break;
                 case 7:
+                    // imprime un estudiante ingresando su posición
                     System.out.println("INGRESE LA POSICIÓN DEL ESTUDIANTE");
                     int posicion = entrada.nextInt();
                     imprimirPorPost(posicion);
                     break;
                 case 8:
-                    // modificar
-
+                    // edita los datos de un estudiante
+                    System.out.println("Digite el ID del estudiante que desea actualizarle la edad");
+                    String carnet = entrada.next();
+                    System.out.println("Digite la nueva edad dele estudiante");
+                    int nuevaEdad = entrada.nextInt();
+                    intercambioDatoStudent(carnet, nuevaEdad);
+                    break;
                 case 9:
+                    // borra un estudiante de la lista
                     System.out.println("INGRESE EL ID DEL ESTUDIANTE A BORRAR");
                     String IDestudianteBorrar = entrada.next();
                     delete(IDestudianteBorrar);
                     break;
-
+                case 10:
+                    imprimirCantidad();
+                    break;
             }
 
-            System.out.println("\n| | | INGRESE OTRA OPCIÓN U 11 PARA SALIR | | | ");
+            System.out.println("\n| | | INGRESE UNA OPCIÓN | | | ");
             opcion = entrada.nextInt();
 
             if (opcion == 11)
                 System.out.println("HA SALIDO DEL MENÚ");
+                break;
         }
 
     }
@@ -157,19 +173,27 @@ public class Metodos{
             return;
         }
 
+        // cuando se quiere borrar el primer de la lista
         // si es el primer estudiante de la lista, entonces le damos el puesto al estudiante que le sigue
-        if(head.getID().equalsIgnoreCase(ID)) {
-            head = head.siguiente;
-        }
+        if (head.getID().equalsIgnoreCase(ID)) {
 
-        Estudiante inspector = head;
-        while(inspector.siguiente != null){
-            if(inspector.siguiente.getID() == ID){
-                inspector.siguiente = inspector.siguiente.siguiente; // apunta al nodo siguiente del que estamos borrando
+            if (head.getID().equalsIgnoreCase(ID) && head.siguiente == null) {
+                head = null;
+                System.out.println("---SE BORRÓ EL ESTUDIANTE---");
+            } else {
+                Estudiante inspector = head;
+                while (inspector.siguiente != null) {
+                    if (inspector.siguiente.getID() == ID) {
+                        inspector.siguiente = inspector.siguiente.siguiente; // apunta al nodo siguiente del que estamos borrando
+                    }
+                    inspector = inspector.siguiente;
+                }
+                head = head.siguiente;
+
+                if (inspector == null)
+                    System.out.println("NO EXISTE EL ESTUDIANTE INGRESADO");
             }
-            inspector = inspector.siguiente;
         }
-
     }
 
     // imprimie los nodos y su información
@@ -269,26 +293,34 @@ public class Metodos{
         }
     }
 
-    public void intercambioDatoStudent(int nuevaEdad, int posicionEstudiante){
-        int contPosicionNodo = 0;
+    public void intercambioDatoStudent(String carne, int nuevaEdad){
         if(head == null){
             System.out.println("Esta lista se encuentra vacía");
         }else {
-            Estudiante auxiliar = head;
-            while(auxiliar != null){
-                //if que evalua si la posicion del estudiante que brindo el usuario es igual a la posicion que ocupa
-                // en la lista el nodo actual.
-                if(posicionEstudiante == contPosicionNodo){
-                    auxiliar.setEdad(nuevaEdad);
-                    System.out.println(auxiliar.toString());
-                    auxiliar = null;
+
+            Estudiante inspector = head;
+            while(inspector != null){
+                if(inspector.getID().equalsIgnoreCase(carne)){
+                    inspector.setEdad(nuevaEdad);
+                    System.out.println(inspector.toString());
+                    break;
                 }
-                contPosicionNodo++;
+                inspector = inspector.siguiente;
             }
+
+            if(inspector == null)
+                System.out.println("NO SE ENCONTRÓ EL ESTUDIANTE");
         }
     }
 
-
-
+    public void imprimirCantidad(){
+            Estudiante inspector = head;
+            int i = 0;
+            while(inspector != null){
+                inspector = inspector.siguiente;
+                i++;
+            }
+            System.out.println("Cantidad de estudiantes en la lista: " + i);
+    }
 }
 
